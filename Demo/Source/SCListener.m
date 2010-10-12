@@ -137,8 +137,8 @@ static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBu
 
 - (void) setupMetering
 {
-	levels = (AudioQueueLevelMeterState*) calloc(sizeof(AudioQueueLevelMeterState), format.mChannelsPerFrame);
-	UInt32 trueValue = true;
+	const UInt32 trueValue = true;
+	levels = calloc(sizeof(AudioQueueLevelMeterState), format.mChannelsPerFrame);
 	AudioQueueSetProperty(queue, kAudioQueueProperty_EnableLevelMetering, &trueValue, sizeof(UInt32));
 }
 

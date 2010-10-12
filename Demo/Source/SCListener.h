@@ -6,7 +6,6 @@
 // Released under the MIT License.
 //
 
-#import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioQueue.h>
 #import <AudioToolbox/AudioServices.h>
 
