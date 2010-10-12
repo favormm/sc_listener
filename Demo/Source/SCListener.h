@@ -10,23 +10,22 @@
 #import <AudioToolbox/AudioQueue.h>
 #import <AudioToolbox/AudioServices.h>
 
-@interface SCListener : NSObject {
+@interface SCListener : NSObject
+{
 	AudioQueueLevelMeterState *levels;
-	
-	AudioQueueRef queue;
 	AudioStreamBasicDescription format;
+	AudioQueueRef queue;
 	Float64 sampleRate;
 }
 
-+ (SCListener *)sharedListener;
+@property(readonly) BOOL listening;
 
-- (void)listen;
-- (BOOL)isListening;
-- (void)pause;
-- (void)stop;
+- (void) listen;
+- (void) pause;
+- (void) stop;
 
-- (Float32)averagePower;
-- (Float32)peakPower;
-- (AudioQueueLevelMeterState *)levels;
+- (float) averagePower;
+- (float) peakPower;
+- (AudioQueueLevelMeterState*) levels;
 
 @end
