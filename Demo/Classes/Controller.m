@@ -31,6 +31,8 @@
 
 - (void) updateMeters
 {
+    [averageMeter setProgress:[listener averagePower]];
+    [peakMeter setProgress:[listener peakPower]];
 }
 
 @end
