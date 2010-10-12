@@ -1,0 +1,12 @@
+#ifdef __OBJC__
+    // Hack, a workaround for an Xcode bug:
+    // https://devforums.apple.com/thread/66169
+    // Remove later.
+    #import <TargetConditionals.h>
+    #if TARGET_IPHONE_SIMULATOR
+    #define __IPHONE_OS_VERSION_MIN_REQUIRED 040100
+    #endif
+    // Regular Objective-C imports.
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
