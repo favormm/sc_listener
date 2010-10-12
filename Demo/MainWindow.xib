@@ -12,7 +12,6 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="11"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -66,6 +65,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 98}, {280, 9}}</string>
 							<reference key="NSSuperview" ref="915151168"/>
+							<reference key="NSWindow"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<float key="IBUIProgress">0.5</float>
@@ -75,6 +75,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 180}, {280, 9}}</string>
 							<reference key="NSSuperview" ref="915151168"/>
+							<reference key="NSWindow"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<float key="IBUIProgress">0.5</float>
@@ -84,6 +85,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 69}, {122, 21}}</string>
 							<reference key="NSSuperview" ref="915151168"/>
+							<reference key="NSWindow"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<int key="IBUIContentMode">7</int>
@@ -106,6 +108,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 151}, {122, 21}}</string>
 							<reference key="NSSuperview" ref="915151168"/>
+							<reference key="NSWindow"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<int key="IBUIContentMode">7</int>
@@ -120,6 +123,7 @@
 					</object>
 					<string key="NSFrameSize">{320, 460}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">10</int>
 						<object class="NSImage" key="NSImage">
