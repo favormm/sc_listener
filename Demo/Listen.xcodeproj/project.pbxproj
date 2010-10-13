@@ -79,10 +79,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0D32238B1264BEFD00DFB6DA /* Controller.h */,
-				0D32238C1264BEFD00DFB6DA /* Controller.m */,
 				0D3223601264BCA500DFB6DA /* SCListener.h */,
 				0D3223611264BCA500DFB6DA /* SCListener.m */,
+				0D32238B1264BEFD00DFB6DA /* Controller.h */,
+				0D32238C1264BEFD00DFB6DA /* Controller.m */,
 				1D3623240D0F684500981E51 /* Application.h */,
 				1D3623250D0F684500981E51 /* Application.m */,
 			);

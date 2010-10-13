@@ -86,7 +86,7 @@ static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBu
 - (AudioQueueLevelMeterState*) levels
 {
     if (!self.listening)
-        return nil;
+        return NULL;
 	[self updateLevels];
 	return levels;
 }
@@ -128,9 +128,10 @@ static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBu
 
 - (void) setupBuffers
 {
+    static const NSUInteger kBufferByteSize = 735;
 	AudioQueueBufferRef buffers[3];
 	for (NSInteger i = 0; i < 3; ++i) { 
-		AudioQueueAllocateBuffer(queue, 735, &buffers[i]); 
+		AudioQueueAllocateBuffer(queue, kBufferByteSize, &buffers[i]); 
 		AudioQueueEnqueueBuffer(queue, buffers[i], 0, NULL); 
 	}
 }
