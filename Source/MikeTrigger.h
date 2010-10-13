@@ -8,16 +8,21 @@ extern NSString *const kSoundEndedNotification;
     SCListener *listener;
     NSTimer *watchTimer;
     float treshold;
-    BOOL overTreshold;
+    BOOL soundRunning;
     NSNotificationCenter *radio;
+    CFAbsoluteTime pauseStartTime;
+    double minPauseDuration;
+    NSUInteger state;
 }
 
 @property(retain) SCListener *listener;
 @property(retain) NSNotificationCenter *radio;
 
 @property(assign) float treshold;
+@property(assign) double minPauseDuration;
+
 @property(readonly) BOOL watching;
-@property(readonly) BOOL overTreshold;
+@property(readonly) BOOL soundRunning;
 
 - (void) startWatching;
 - (void) stopWatching;

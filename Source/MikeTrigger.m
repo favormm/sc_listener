@@ -1,17 +1,24 @@
 #import "MikeTrigger.h"
 
+enum {
+    kStateSoundOff,
+    kStateSoundOn,
+    kStateSoundEnding
+};
+
 static const float kReadingInterval = 0.1;
 
 NSString *const kSoundStartedNotification = @"sound started";
 NSString *const kSoundEndedNotification = @"sound ended";
 
 @implementation MikeTrigger
-@synthesize treshold, listener, radio, overTreshold;
+@synthesize treshold, listener, radio, minPauseDuration, soundRunning;
 
 - (id) init
 {
     [super init];
     treshold = 0.5;
+    minPauseDuration = 0.2;
     return self;
 }
 
@@ -32,6 +39,8 @@ NSString *const kSoundEndedNotification = @"sound ended";
     if (self.watching)
         return;
     [listener listen];
+    state = kStateSoundOff;
+    soundRunning = NO;
     watchTimer = [NSTimer scheduledTimerWithTimeInterval:kReadingInterval target:self
         selector:@selector(forceUpdate) userInfo:nil repeats:YES];
 }
@@ -44,16 +53,33 @@ NSString *const kSoundEndedNotification = @"sound ended";
 - (void) forceUpdate
 {
     const float level = [listener averagePower];
+    CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
     
-    if (level >= treshold && !overTreshold) {
-        [radio postNotificationName:kSoundStartedNotification object:self];
-        overTreshold = YES;
-        return;
-    }
-    
-    if (level < treshold && overTreshold) {
-        [radio postNotificationName:kSoundEndedNotification object:self];
-        overTreshold = NO;
+    switch (state) {
+        case kStateSoundOff:
+            if (level < treshold)
+                break;
+            soundRunning = YES;
+            state = kStateSoundOn;
+            [radio postNotificationName:kSoundStartedNotification object:self];
+            break;
+        case kStateSoundOn:
+            if (level >= treshold)
+                break;
+            state = kStateSoundEnding;
+            pauseStartTime = now;
+            // Fall through to turn off immediately if minPauseDuration == 0.
+        case kStateSoundEnding:
+            if (level >= treshold) {
+                state = kStateSoundOn;
+                break;
+            }
+            if (now - pauseStartTime >= minPauseDuration) {
+                state = kStateSoundOff;
+                soundRunning = NO;
+                [radio postNotificationName:kSoundEndedNotification object:self];
+            }
+            break;
     }
 }
 

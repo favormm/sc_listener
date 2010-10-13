@@ -14,6 +14,7 @@
     [detector setListener:listener];
     [detector setRadio:[NSNotificationCenter defaultCenter]];
     [detector setTreshold:0.1];
+    [detector setMinPauseDuration:1.0];
     
     controller = [[Controller alloc] initWithNibName:@"Controller" bundle:nil];
     [controller setListener:listener];

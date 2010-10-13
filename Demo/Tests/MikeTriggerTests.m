@@ -7,7 +7,7 @@
     MikeTrigger *trigger;
     MockListener *listener;
     NSNotificationCenter *radio;
-    BOOL overTreshold;
+    BOOL soundRunning;
     BOOL receivedNotification;
 }
 
@@ -47,34 +47,35 @@
 - (void) didCrossTresholdUp
 {
     receivedNotification = YES;
-    overTreshold = YES;
+    soundRunning = YES;
 }
 
 - (void) didCrossTresholdDown
 {
     receivedNotification = YES;
-    overTreshold = NO;
+    soundRunning = NO;
 }
 
 #pragma mark Tests
 
 - (void) testInitialTreshold
 {
-    STAssertFalse(trigger.overTreshold, @"Not over treshold initially.");
+    STAssertFalse(trigger.soundRunning, @"Sound not running initially.");
 }
 
 - (void) testTresholdUp
 {
     [listener setPower:0.7];
+    [trigger setMinPauseDuration:0];
     [trigger forceUpdate];
-    STAssertTrue(receivedNotification && overTreshold,
-        @"Send notification when crossing up the treshold.");
+    STAssertTrue(receivedNotification && soundRunning,
+        @"Send notification when sound starts.");
 
     receivedNotification = NO;
     [listener setPower:0.2];
     [trigger forceUpdate];
-    STAssertTrue(receivedNotification && !overTreshold,
-        @"Send notification when crossing down the treshold.");
+    STAssertTrue(receivedNotification && !soundRunning,
+        @"Send notification when sound stops.");
 }
 
 - (void) testRepeatedOverstep
