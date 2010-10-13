@@ -1,6 +1,6 @@
 #import "Application.h"
 #import "SCListener.h"
-#import "MikeTrigger.h"
+#import "SoundDetector.h"
 #import "Controller.h"
 
 @implementation Application
@@ -10,7 +10,7 @@
 {
     SCListener *listener = [[SCListener alloc] init];
 
-    MikeTrigger *detector = [[MikeTrigger alloc] init];
+    SoundDetector *detector = [[SoundDetector alloc] init];
     [detector setListener:listener];
     [detector setRadio:[NSNotificationCenter defaultCenter]];
     [detector setTreshold:0.1];

@@ -1,4 +1,4 @@
-#import "MikeTrigger.h"
+#import "SoundDetector.h"
 
 enum {
     kStateSoundOff,
@@ -11,7 +11,7 @@ static const float kReadingInterval = 0.1;
 NSString *const kSoundDidStartNotification = @"sound started";
 NSString *const kSoundDidStopNotification = @"sound ended";
 
-@implementation MikeTrigger
+@implementation SoundDetector
 @synthesize treshold, listener, radio, minPauseDuration, soundRunning;
 
 - (id) init

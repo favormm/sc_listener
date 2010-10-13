@@ -1,5 +1,5 @@
 #import "SCListener.h"
-#import "MikeTrigger.h"
+#import "SoundDetector.h"
 
 @interface Controller : UIViewController
 {
@@ -7,12 +7,12 @@
     UIProgressView *averageMeter;
     UIProgressView *peakMeter;
     NSTimer *readingTimer;
-    MikeTrigger *soundDetector;
+    SoundDetector *soundDetector;
     NSNotificationCenter *radio;
 }
 
 @property(retain) SCListener *listener;
-@property(retain) MikeTrigger *soundDetector;
+@property(retain) SoundDetector *soundDetector;
 @property(retain) NSNotificationCenter *radio;
 
 @property(retain) IBOutlet UIProgressView *averageMeter;

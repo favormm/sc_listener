@@ -13,9 +13,9 @@
 		0D32238E1264BEFD00DFB6DA /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D32238C1264BEFD00DFB6DA /* Controller.m */; };
 		0D7CCF9F126587AA00443C57 /* SCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCF9E126587AA00443C57 /* SCListener.m */; };
 		0D7CCFA0126587AA00443C57 /* SCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCF9E126587AA00443C57 /* SCListener.m */; };
-		0D7CCFC5126591D400443C57 /* MikeTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFC4126591D400443C57 /* MikeTrigger.m */; };
-		0D7CCFC6126591D400443C57 /* MikeTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFC4126591D400443C57 /* MikeTrigger.m */; };
-		0D7CCFCE1265950B00443C57 /* MikeTriggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFCD1265950B00443C57 /* MikeTriggerTests.m */; };
+		0D7CCFC5126591D400443C57 /* SoundDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFC4126591D400443C57 /* SoundDetector.m */; };
+		0D7CCFC6126591D400443C57 /* SoundDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFC4126591D400443C57 /* SoundDetector.m */; };
+		0D7CCFCE1265950B00443C57 /* SoundDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFCD1265950B00443C57 /* SoundDetectorTests.m */; };
 		0D7CCFD11265956A00443C57 /* MockListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFD01265956A00443C57 /* MockListener.m */; };
 		0D7CCFF31265A00D00443C57 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7CCFF21265A00D00443C57 /* Controller.xib */; };
 		0D7CCFF41265A00D00443C57 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7CCFF21265A00D00443C57 /* Controller.xib */; };
@@ -44,9 +44,9 @@
 		0D32238C1264BEFD00DFB6DA /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		0D7CCF9D126587AA00443C57 /* SCListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCListener.h; path = ../Source/SCListener.h; sourceTree = SOURCE_ROOT; };
 		0D7CCF9E126587AA00443C57 /* SCListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCListener.m; path = ../Source/SCListener.m; sourceTree = SOURCE_ROOT; };
-		0D7CCFC3126591D400443C57 /* MikeTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MikeTrigger.h; path = ../Source/MikeTrigger.h; sourceTree = SOURCE_ROOT; };
-		0D7CCFC4126591D400443C57 /* MikeTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MikeTrigger.m; path = ../Source/MikeTrigger.m; sourceTree = SOURCE_ROOT; };
-		0D7CCFCD1265950B00443C57 /* MikeTriggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MikeTriggerTests.m; path = Tests/MikeTriggerTests.m; sourceTree = "<group>"; };
+		0D7CCFC3126591D400443C57 /* SoundDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundDetector.h; path = ../Source/SoundDetector.h; sourceTree = SOURCE_ROOT; };
+		0D7CCFC4126591D400443C57 /* SoundDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundDetector.m; path = ../Source/SoundDetector.m; sourceTree = SOURCE_ROOT; };
+		0D7CCFCD1265950B00443C57 /* SoundDetectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundDetectorTests.m; path = Tests/SoundDetectorTests.m; sourceTree = "<group>"; };
 		0D7CCFCF1265956A00443C57 /* MockListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MockListener.h; path = Tests/MockListener.h; sourceTree = "<group>"; };
 		0D7CCFD01265956A00443C57 /* MockListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MockListener.m; path = Tests/MockListener.m; sourceTree = "<group>"; };
 		0D7CCFF21265A00D00443C57 /* Controller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Controller.xib; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 			children = (
 				0D7CCF9D126587AA00443C57 /* SCListener.h */,
 				0D7CCF9E126587AA00443C57 /* SCListener.m */,
-				0D7CCFC3126591D400443C57 /* MikeTrigger.h */,
-				0D7CCFC4126591D400443C57 /* MikeTrigger.m */,
+				0D7CCFC3126591D400443C57 /* SoundDetector.h */,
+				0D7CCFC4126591D400443C57 /* SoundDetector.m */,
 				0D32238B1264BEFD00DFB6DA /* Controller.h */,
 				0D32238C1264BEFD00DFB6DA /* Controller.m */,
 				1D3623240D0F684500981E51 /* Application.h */,
@@ -109,7 +109,7 @@
 				0D7CCFCF1265956A00443C57 /* MockListener.h */,
 				0D7CCFD01265956A00443C57 /* MockListener.m */,
 				0DDBD516125EF7460082EEE8 /* AssertionTests.m */,
-				0D7CCFCD1265950B00443C57 /* MikeTriggerTests.m */,
+				0D7CCFCD1265950B00443C57 /* SoundDetectorTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -275,8 +275,8 @@
 				0DDBD517125EF7460082EEE8 /* AssertionTests.m in Sources */,
 				0D32238D1264BEFD00DFB6DA /* Controller.m in Sources */,
 				0D7CCF9F126587AA00443C57 /* SCListener.m in Sources */,
-				0D7CCFC6126591D400443C57 /* MikeTrigger.m in Sources */,
-				0D7CCFCE1265950B00443C57 /* MikeTriggerTests.m in Sources */,
+				0D7CCFC6126591D400443C57 /* SoundDetector.m in Sources */,
+				0D7CCFCE1265950B00443C57 /* SoundDetectorTests.m in Sources */,
 				0D7CCFD11265956A00443C57 /* MockListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +289,7 @@
 				1D3623260D0F684500981E51 /* Application.m in Sources */,
 				0D32238E1264BEFD00DFB6DA /* Controller.m in Sources */,
 				0D7CCFA0126587AA00443C57 /* SCListener.m in Sources */,
-				0D7CCFC5126591D400443C57 /* MikeTrigger.m in Sources */,
+				0D7CCFC5126591D400443C57 /* SoundDetector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

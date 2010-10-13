@@ -3,7 +3,7 @@
 extern NSString *const kSoundDidStartNotification;
 extern NSString *const kSoundDidStopNotification;
 
-@interface MikeTrigger : NSObject
+@interface SoundDetector : NSObject
 {
     SCListener *listener;
     NSTimer *watchTimer;

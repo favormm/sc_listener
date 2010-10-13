@@ -1,10 +1,10 @@
 #import <SenTestingKit/SenTestingKit.h>
-#import "MikeTrigger.h"
+#import "SoundDetector.h"
 #import "MockListener.h"
 
-@interface MikeTriggerTests : SenTestCase
+@interface SoundDetectorTests : SenTestCase
 {
-    MikeTrigger *trigger;
+    SoundDetector *detector;
     MockListener *listener;
     NSNotificationCenter *radio;
     BOOL soundRunning;
@@ -13,24 +13,24 @@
 
 @end
 
-@implementation MikeTriggerTests
+@implementation SoundDetectorTests
 
 #pragma mark Setup
 
 - (void) setUp
 {
     [super setUp];
-    trigger = [[MikeTrigger alloc] init];
+    detector = [[SoundDetector alloc] init];
     listener = [[MockListener alloc] init];
     radio = [[NSNotificationCenter alloc] init];
-    [trigger setListener:(id)listener];
-    [trigger setRadio:radio];
-    [trigger setTreshold:0.5];
+    [detector setListener:(id)listener];
+    [detector setRadio:radio];
+    [detector setTreshold:0.5];
     
     [radio addObserver:self selector:@selector(didCrossTresholdUp)
-        name:kSoundDidStartNotification object:trigger];
+        name:kSoundDidStartNotification object:detector];
     [radio addObserver:self selector:@selector(didCrossTresholdDown)
-        name:kSoundDidStopNotification object:trigger];
+        name:kSoundDidStopNotification object:detector];
 }
 
 - (void) tearDown
@@ -38,7 +38,7 @@
     [radio removeObserver:self];
     [radio release];
     [listener release];
-    [trigger release];
+    [detector release];
     [super tearDown];
 }
 
@@ -60,20 +60,20 @@
 
 - (void) testInitialTreshold
 {
-    STAssertFalse(trigger.soundRunning, @"Sound not running initially.");
+    STAssertFalse(detector.soundRunning, @"Sound not running initially.");
 }
 
 - (void) testTresholdUp
 {
     [listener setPower:0.7];
-    [trigger setMinPauseDuration:0];
-    [trigger forceUpdate];
+    [detector setMinPauseDuration:0];
+    [detector forceUpdate];
     STAssertTrue(receivedNotification && soundRunning,
         @"Send notification when sound starts.");
 
     receivedNotification = NO;
     [listener setPower:0.2];
-    [trigger forceUpdate];
+    [detector forceUpdate];
     STAssertTrue(receivedNotification && !soundRunning,
         @"Send notification when sound stops.");
 }
@@ -81,10 +81,10 @@
 - (void) testRepeatedOverstep
 {
     [listener setPower:0.7];
-    [trigger forceUpdate];
+    [detector forceUpdate];
     receivedNotification = NO;
     [listener setPower:0.9];
-    [trigger forceUpdate];
+    [detector forceUpdate];
     STAssertFalse(receivedNotification,
         @"Do not send resend the notification.");
 }
