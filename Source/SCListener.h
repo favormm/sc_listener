@@ -11,10 +11,10 @@
 
 @interface SCListener : NSObject
 {
-	AudioQueueLevelMeterState *levels;
-	AudioStreamBasicDescription format;
-	AudioQueueRef queue;
-	Float64 sampleRate;
+    AudioQueueLevelMeterState *levels;
+    AudioStreamBasicDescription format;
+    AudioQueueRef queue;
+    Float64 sampleRate;
 }
 
 @property(readonly) BOOL listening;
