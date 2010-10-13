@@ -108,6 +108,7 @@ static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBu
 #if TARGET_IPHONE_SIMULATOR
     format.mSampleRate = 44100.0;
 #else
+    Float64 sampleRate;
     UInt32 ioDataSize = sizeof(sampleRate);
     AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareSampleRate, &ioDataSize, &sampleRate);
     format.mSampleRate = sampleRate;
