@@ -17,6 +17,8 @@
 		0D7CCFC6126591D400443C57 /* MikeTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFC4126591D400443C57 /* MikeTrigger.m */; };
 		0D7CCFCE1265950B00443C57 /* MikeTriggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFCD1265950B00443C57 /* MikeTriggerTests.m */; };
 		0D7CCFD11265956A00443C57 /* MockListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCFD01265956A00443C57 /* MockListener.m */; };
+		0D7CCFF31265A00D00443C57 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7CCFF21265A00D00443C57 /* Controller.xib */; };
+		0D7CCFF41265A00D00443C57 /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7CCFF21265A00D00443C57 /* Controller.xib */; };
 		0DDBD517125EF7460082EEE8 /* AssertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBD516125EF7460082EEE8 /* AssertionTests.m */; };
 		1D3623260D0F684500981E51 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Application.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -47,6 +49,7 @@
 		0D7CCFCD1265950B00443C57 /* MikeTriggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MikeTriggerTests.m; path = Tests/MikeTriggerTests.m; sourceTree = "<group>"; };
 		0D7CCFCF1265956A00443C57 /* MockListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MockListener.h; path = Tests/MockListener.h; sourceTree = "<group>"; };
 		0D7CCFD01265956A00443C57 /* MockListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MockListener.m; path = Tests/MockListener.m; sourceTree = "<group>"; };
+		0D7CCFF21265A00D00443C57 /* Controller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Controller.xib; sourceTree = "<group>"; };
 		0DDBD4FB125EF5EE0082EEE8 /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DDBD4FC125EF5EE0082EEE8 /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		0DDBD516125EF7460082EEE8 /* AssertionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssertionTests.m; path = Tests/AssertionTests.m; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				0D7CCFF21265A00D00443C57 /* Controller.xib */,
 				8D1107310486CEB800E47090 /* Listen-Info.plist */,
 				0DDBD4FC125EF5EE0082EEE8 /* LogicTests-Info.plist */,
 			);
@@ -232,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7CCFF41265A00D00443C57 /* Controller.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				0D7CCFF31265A00D00443C57 /* Controller.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
