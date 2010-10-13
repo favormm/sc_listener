@@ -6,7 +6,7 @@ enum {
     kStateSoundEnding
 };
 
-static const float kReadingInterval = 0.1;
+static const float kReadingInterval = 0.05;
 
 NSString *const kSoundDidStartNotification = @"sound started";
 NSString *const kSoundDidStopNotification = @"sound ended";
