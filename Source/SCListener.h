@@ -1,11 +1,3 @@
-//
-// SCListener 1.0.1
-// http://github.com/stephencelis/sc_listener
-//
-// (c) 2009-* Stephen Celis, <stephen@stephencelis.com>.
-// Released under the MIT License.
-//
-
 #import <AudioToolbox/AudioQueue.h>
 #import <AudioToolbox/AudioServices.h>
 
