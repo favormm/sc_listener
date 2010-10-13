@@ -54,6 +54,7 @@ static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBu
 	if (queue == nil)
 		return;
 	AudioQueueDispose(queue, true);
+    free(levels);
 	queue = nil;
 }
 
