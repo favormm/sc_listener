@@ -1,13 +1,16 @@
 #import "Controller.h"
 
 @implementation Controller
-@synthesize listener, averageMeter, peakMeter, soundDetector, radio;
+@synthesize listener, averageMeter, peakMeter, soundDetector, radio, speakerIcon;
 
 - (void) dealloc
 {
     [radio release];
     [soundDetector release];
     [listener release];
+    [averageMeter release];
+    [peakMeter release];
+    [speakerIcon release];
     [super dealloc];
 }
 
@@ -16,6 +19,7 @@
     [super viewWillAppear:animated];
     
     // Reset UI.
+    [speakerIcon setHidden:YES];
     [averageMeter setProgress:0];
     [peakMeter setProgress:0];
     
@@ -55,11 +59,11 @@
 #pragma mark Sound Events
 
 - (void) soundDidStart {
-    NSLog(@"Sound started.");
+    [speakerIcon setHidden:NO];
 }
 
 - (void) soundDidStop {
-    NSLog(@"Sound stopped.");
+    [speakerIcon setHidden:YES];
 }
 
 @end

@@ -9,6 +9,7 @@
     NSTimer *readingTimer;
     SoundDetector *soundDetector;
     NSNotificationCenter *radio;
+    UIView *speakerIcon;
 }
 
 @property(retain) SCListener *listener;
@@ -17,5 +18,6 @@
 
 @property(retain) IBOutlet UIProgressView *averageMeter;
 @property(retain) IBOutlet UIProgressView *peakMeter;
+@property(retain) IBOutlet UIView *speakerIcon;
 
 @end
