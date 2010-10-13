@@ -8,8 +8,8 @@ enum {
 
 static const float kReadingInterval = 0.1;
 
-NSString *const kSoundStartedNotification = @"sound started";
-NSString *const kSoundEndedNotification = @"sound ended";
+NSString *const kSoundDidStartNotification = @"sound started";
+NSString *const kSoundDidStopNotification = @"sound ended";
 
 @implementation MikeTrigger
 @synthesize treshold, listener, radio, minPauseDuration, soundRunning;
@@ -61,14 +61,14 @@ NSString *const kSoundEndedNotification = @"sound ended";
                 break;
             soundRunning = YES;
             state = kStateSoundOn;
-            [radio postNotificationName:kSoundStartedNotification object:self];
+            [radio postNotificationName:kSoundDidStartNotification object:self];
             break;
         case kStateSoundOn:
             if (level >= treshold)
                 break;
             state = kStateSoundEnding;
             pauseStartTime = now;
-            // Fall through to turn off immediately if minPauseDuration == 0.
+            // Fall through to stop immediately if minPauseDuration == 0.
         case kStateSoundEnding:
             if (level >= treshold) {
                 state = kStateSoundOn;
@@ -77,7 +77,7 @@ NSString *const kSoundEndedNotification = @"sound ended";
             if (now - pauseStartTime >= minPauseDuration) {
                 state = kStateSoundOff;
                 soundRunning = NO;
-                [radio postNotificationName:kSoundEndedNotification object:self];
+                [radio postNotificationName:kSoundDidStopNotification object:self];
             }
             break;
     }

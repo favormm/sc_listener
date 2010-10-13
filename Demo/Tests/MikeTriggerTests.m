@@ -28,9 +28,9 @@
     [trigger setTreshold:0.5];
     
     [radio addObserver:self selector:@selector(didCrossTresholdUp)
-        name:kSoundStartedNotification object:trigger];
+        name:kSoundDidStartNotification object:trigger];
     [radio addObserver:self selector:@selector(didCrossTresholdDown)
-        name:kSoundEndedNotification object:trigger];
+        name:kSoundDidStopNotification object:trigger];
 }
 
 - (void) tearDown

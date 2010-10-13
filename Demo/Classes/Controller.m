@@ -25,9 +25,9 @@
     
     // Watch for sound events.
     [radio addObserver:self selector:@selector(soundDidStart)
-        name:kSoundStartedNotification object:soundDetector];
+        name:kSoundDidStartNotification object:soundDetector];
     [radio addObserver:self selector:@selector(soundDidStop)
-        name:kSoundEndedNotification object:soundDetector];
+        name:kSoundDidStopNotification object:soundDetector];
 }
 
 - (void) viewWillDisappear: (BOOL) animated

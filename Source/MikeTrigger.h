@@ -1,7 +1,7 @@
 #import "SCListener.h"
 
-extern NSString *const kSoundStartedNotification;
-extern NSString *const kSoundEndedNotification;
+extern NSString *const kSoundDidStartNotification;
+extern NSString *const kSoundDidStopNotification;
 
 @interface MikeTrigger : NSObject
 {
