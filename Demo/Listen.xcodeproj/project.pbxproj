@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D3223621264BCA500DFB6DA /* SCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3223611264BCA500DFB6DA /* SCListener.m */; };
-		0D3223631264BCA500DFB6DA /* SCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3223611264BCA500DFB6DA /* SCListener.m */; };
 		0D3223681264BCD000DFB6DA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3223671264BCD000DFB6DA /* AudioToolbox.framework */; };
 		0D3223751264BCD700DFB6DA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3223671264BCD000DFB6DA /* AudioToolbox.framework */; };
 		0D32238D1264BEFD00DFB6DA /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D32238C1264BEFD00DFB6DA /* Controller.m */; };
 		0D32238E1264BEFD00DFB6DA /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D32238C1264BEFD00DFB6DA /* Controller.m */; };
+		0D7CCF9F126587AA00443C57 /* SCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCF9E126587AA00443C57 /* SCListener.m */; };
+		0D7CCFA0126587AA00443C57 /* SCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CCF9E126587AA00443C57 /* SCListener.m */; };
 		0DDBD517125EF7460082EEE8 /* AssertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBD516125EF7460082EEE8 /* AssertionTests.m */; };
 		1D3623260D0F684500981E51 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Application.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -33,11 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D3223601264BCA500DFB6DA /* SCListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCListener.h; path = ../Source/SCListener.h; sourceTree = "<group>"; };
-		0D3223611264BCA500DFB6DA /* SCListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCListener.m; path = ../Source/SCListener.m; sourceTree = "<group>"; };
 		0D3223671264BCD000DFB6DA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D32238B1264BEFD00DFB6DA /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		0D32238C1264BEFD00DFB6DA /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		0D7CCF9D126587AA00443C57 /* SCListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCListener.h; path = ../Source/SCListener.h; sourceTree = SOURCE_ROOT; };
+		0D7CCF9E126587AA00443C57 /* SCListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCListener.m; path = ../Source/SCListener.m; sourceTree = SOURCE_ROOT; };
 		0DDBD4FB125EF5EE0082EEE8 /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DDBD4FC125EF5EE0082EEE8 /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		0DDBD516125EF7460082EEE8 /* AssertionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssertionTests.m; path = Tests/AssertionTests.m; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0D3223601264BCA500DFB6DA /* SCListener.h */,
-				0D3223611264BCA500DFB6DA /* SCListener.m */,
+				0D7CCF9D126587AA00443C57 /* SCListener.h */,
+				0D7CCF9E126587AA00443C57 /* SCListener.m */,
 				0D32238B1264BEFD00DFB6DA /* Controller.h */,
 				0D32238C1264BEFD00DFB6DA /* Controller.m */,
 				1D3623240D0F684500981E51 /* Application.h */,
@@ -253,8 +253,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DDBD517125EF7460082EEE8 /* AssertionTests.m in Sources */,
-				0D3223621264BCA500DFB6DA /* SCListener.m in Sources */,
 				0D32238D1264BEFD00DFB6DA /* Controller.m in Sources */,
+				0D7CCF9F126587AA00443C57 /* SCListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,8 +264,8 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* Application.m in Sources */,
-				0D3223631264BCA500DFB6DA /* SCListener.m in Sources */,
 				0D32238E1264BEFD00DFB6DA /* Controller.m in Sources */,
+				0D7CCFA0126587AA00443C57 /* SCListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,116 +10,109 @@
 
 @interface SCListener (Private)
 
-- (void)updateLevels;
-- (void)setupQueue;
-- (void)setupFormat;
-- (void)setupBuffers;
-- (void)setupMetering;
+- (void) updateLevels;
+- (void) setupQueue;
+- (void) setupFormat;
+- (void) setupBuffers;
+- (void) setupMetering;
 
 @end
 
-static SCListener *sharedListener = nil;
-
-static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer, const AudioTimeStamp *inStartTime, UInt32 inNumberPacketsDescriptions, const AudioStreamPacketDescription *inPacketDescs) {
-	SCListener *listener = (SCListener *)inUserData;
-	if ([listener isListening])
+static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer,
+    const AudioTimeStamp *inStartTime, UInt32 inNumberPacketsDescriptions,
+    const AudioStreamPacketDescription *inPacketDescs)
+{
+	SCListener *listener = (id) inUserData;
+	if (listener.listening)
 		AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
 }
 
 @implementation SCListener
 
-+ (SCListener *)sharedListener {
-	@synchronized(self) {
-		if (sharedListener == nil)
-			[[self alloc] init];
-	}
-
-	return sharedListener;
-}
-
-- (void)dealloc {
-	[sharedListener stop];
+- (void) dealloc
+{
+	[self stop];
 	[super dealloc];
 }
 
-#pragma mark -
-#pragma mark Listening
-
-- (void)listen {
+- (void) listen
+{
 	if (queue == nil)
 		[self setupQueue];
-
 	AudioQueueStart(queue, NULL);
 }
 
-- (void)pause {
-	if (![self isListening])
+- (void) pause
+{
+	if (!self.listening)
 		return;
-
 	AudioQueueStop(queue, true);
 }
 
-- (void)stop {
+- (void) stop
+{
 	if (queue == nil)
 		return;
-
 	AudioQueueDispose(queue, true);
+    free(levels);
 	queue = nil;
 }
 
-- (BOOL)isListening {
+- (BOOL) listening
+{
 	if (queue == nil)
 		return NO;
-
 	UInt32 isListening, ioDataSize = sizeof(UInt32);
-	OSStatus result = AudioQueueGetProperty(queue, kAudioQueueProperty_IsRunning, &isListening, &ioDataSize);
+	OSStatus result = AudioQueueGetProperty(queue, kAudioQueueProperty_IsRunning,
+        &isListening, &ioDataSize);
 	return (result != noErr) ? NO : isListening;
 }
 
-#pragma mark -
-#pragma mark Levels getters
+#pragma mark Metering
 
-- (Float32)averagePower {
-	if (![self isListening])
-		return 0.0;
-
-	return [self levels][0].mAveragePower;
+- (float) averagePower
+{
+    if (!self.listening)
+        return -1;
+    return [self levels][0].mAveragePower;
 }
 
-- (Float32)peakPower {
-	if (![self isListening])
-		return 0.0;
-
+- (float) peakPower
+{
+	if (!self.listening)
+		return -1;
 	return [self levels][0].mPeakPower;
 }
 
-- (AudioQueueLevelMeterState *)levels {
-  if (![self isListening])
-    return nil;
-	
+- (AudioQueueLevelMeterState*) levels
+{
+    if (!self.listening)
+        return NULL;
 	[self updateLevels];
 	return levels;
 }
 
-- (void)updateLevels {
+- (void) updateLevels
+{
 	UInt32 ioDataSize = format.mChannelsPerFrame * sizeof(AudioQueueLevelMeterState);
-	AudioQueueGetProperty(queue, (AudioQueuePropertyID)kAudioQueueProperty_CurrentLevelMeter, levels, &ioDataSize);
+	AudioQueueGetProperty(queue, (AudioQueuePropertyID)kAudioQueueProperty_CurrentLevelMeter,
+        levels, &ioDataSize);
 }
 
-#pragma mark -
 #pragma mark Setup
 
-- (void)setupQueue {
-	if (queue)
+- (void) setupQueue
+{
+	if (queue != nil)
 		return;
-
 	[self setupFormat];
 	[self setupBuffers];
 	AudioQueueNewInput(&format, listeningCallback, self, NULL, NULL, 0, &queue);
 	[self setupMetering];	
 }
 
-- (void)setupFormat {
+- (void) setupFormat
+{
 #if TARGET_IPHONE_SIMULATOR
 	format.mSampleRate = 44100.0;
 #else
@@ -134,59 +127,21 @@ static void listeningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBu
 	format.mBytesPerPacket = format.mBytesPerFrame = 2;
 }
 
-- (void)setupBuffers {
+- (void) setupBuffers
+{
+    static const NSUInteger kBufferByteSize = 735;
 	AudioQueueBufferRef buffers[3];
 	for (NSInteger i = 0; i < 3; ++i) { 
-		AudioQueueAllocateBuffer(queue, 735, &buffers[i]); 
+		AudioQueueAllocateBuffer(queue, kBufferByteSize, &buffers[i]); 
 		AudioQueueEnqueueBuffer(queue, buffers[i], 0, NULL); 
 	}
 }
 
-- (void)setupMetering {
-	levels = (AudioQueueLevelMeterState *)calloc(sizeof(AudioQueueLevelMeterState), format.mChannelsPerFrame);
-	UInt32 trueValue = true;
+- (void) setupMetering
+{
+	const UInt32 trueValue = true;
+	levels = calloc(sizeof(AudioQueueLevelMeterState), format.mChannelsPerFrame);
 	AudioQueueSetProperty(queue, kAudioQueueProperty_EnableLevelMetering, &trueValue, sizeof(UInt32));
-}
-
-#pragma mark -
-#pragma mark Singleton Pattern
-
-+ (id)allocWithZone:(NSZone *)zone {
-	@synchronized(self) {
-		if (sharedListener == nil) {
-			sharedListener = [super allocWithZone:zone];
-			return sharedListener;
-		}
-	}
-
-	return nil;
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-	return self;
-}
-
-- (id)init {
-	if ([super init] == nil)
-		return nil;
-
-	return self;
-}
-
-- (id)retain {
-	return self;
-}
-
-- (unsigned)retainCount {
-	return UINT_MAX;
-}
-
-- (void)release {
-	// Do nothing.
-}
-
-- (id)autorelease {
-	return self;
 }
 
 @end
